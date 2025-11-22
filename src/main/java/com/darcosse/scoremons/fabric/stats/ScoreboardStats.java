@@ -1,16 +1,14 @@
 package com.darcosse.scoremons.fabric.stats;
 
 import com.cobblemon.mod.common.Cobblemon;
-import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent;
 import com.cobblemon.mod.common.api.events.fishing.BobberSpawnPokemonEvent;
-import com.cobblemon.mod.common.api.events.fishing.PokerodReelEvent;
 import com.cobblemon.mod.common.api.events.pokeball.ThrownPokeballHitEvent;
 import com.cobblemon.mod.common.api.events.pokemon.FossilRevivedEvent;
 import com.cobblemon.mod.common.api.events.pokemon.PokedexDataChangedEvent;
 import com.cobblemon.mod.common.api.events.pokemon.PokemonCapturedEvent;
-import com.cobblemon.mod.common.api.events.pokemon.TradeCompletedEvent;
-import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionAcceptedEvent;
+import com.cobblemon.mod.common.api.events.pokemon.TradeEvent;
+import com.cobblemon.mod.common.api.events.pokemon.TradeEvent.Post;
 import com.cobblemon.mod.common.api.events.pokemon.evolution.EvolutionCompleteEvent;
 import com.cobblemon.mod.common.api.pokedex.CaughtCount;
 import com.cobblemon.mod.common.trade.PlayerTradeParticipant;
@@ -109,7 +107,7 @@ public class ScoreboardStats {
         };
     }
 
-    public static Function1<? super TradeCompletedEvent, Unit> registerTrades() {
+    public static Function1<? super TradeEvent.Post, Unit> registerTrades() {
         return event -> {
 
             List<TradeParticipant> players = new ArrayList<>();
