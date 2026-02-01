@@ -38,6 +38,7 @@ public class ScoreboardStats {
     public static final Identifier POKEMON_CAUGHT = Identifier.of(MODID, "pokemon_caught");
     public static final Identifier SHINY_POKEMON_CAUGHT = Identifier.of(MODID, "shiny_pokemon_caught");
     public static final Identifier BATTLE_WON = Identifier.of(MODID, "battle_won");
+    public static final Identifier BATTLE_LOSE = Identifier.of(MODID, "battle_lose");
     public static final Identifier POKEMON_REGISTERED = Identifier.of(MODID, "pokemon_registered");
     public static final Identifier POKEMON_REEL = Identifier.of(MODID, "pokemon_reel");
     public static final Identifier TRADES = Identifier.of(MODID, "trades");
@@ -49,6 +50,7 @@ public class ScoreboardStats {
         Registry.register(Registries.CUSTOM_STAT, POKEMON_CAUGHT, POKEMON_CAUGHT);
         Registry.register(Registries.CUSTOM_STAT, SHINY_POKEMON_CAUGHT, SHINY_POKEMON_CAUGHT);
         Registry.register(Registries.CUSTOM_STAT, BATTLE_WON, BATTLE_WON);
+        Registry.register(Registries.CUSTOM_STAT, BATTLE_LOSE, BATTLE_LOSE);
         Registry.register(Registries.CUSTOM_STAT, POKEMON_REGISTERED, POKEMON_REGISTERED);
         Registry.register(Registries.CUSTOM_STAT, POKEMON_REEL, POKEMON_REEL);
         Registry.register(Registries.CUSTOM_STAT, TRADES, TRADES);
@@ -59,6 +61,7 @@ public class ScoreboardStats {
         Stats.CUSTOM.getOrCreateStat(POKEMON_CAUGHT);
         Stats.CUSTOM.getOrCreateStat(SHINY_POKEMON_CAUGHT);
         Stats.CUSTOM.getOrCreateStat(BATTLE_WON);
+        Stats.CUSTOM.getOrCreateStat(BATTLE_LOSE);
         Stats.CUSTOM.getOrCreateStat(POKEMON_REGISTERED);
         Stats.CUSTOM.getOrCreateStat(POKEMON_REEL);
         Stats.CUSTOM.getOrCreateStat(TRADES);
@@ -155,12 +158,18 @@ public class ScoreboardStats {
         return event -> {
             if (event.getBattle().isPvP()) {
                 UUID winnerId = event.getWinners().getFirst().getUuid();
+                UUID loserId = event.getLosers().getFirst().getUuid();
                 PlayerEntity any = event.getBattle().getPlayers().getFirst();
                 MinecraftServer server = any.getServer();
                 if (server != null) {
                     ServerPlayerEntity winner = server.getPlayerManager().getPlayer(winnerId);
                     if (winner != null) {
                         winner.incrementStat(Stats.CUSTOM.getOrCreateStat(BATTLE_WON));
+                    }
+
+                    ServerPlayerEntity loser = server.getPlayerManager().getPlayer(loserId);
+                    if (loser != null) {
+                        loser.incrementStat(Stats.CUSTOM.getOrCreateStat(BATTLE_LOSE));
                     }
                 }
             }

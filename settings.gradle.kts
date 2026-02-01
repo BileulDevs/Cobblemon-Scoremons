@@ -1,4 +1,4 @@
-rootProject.name = "ScoreMons"
+rootProject.name = "Scoremons"
 
 pluginManagement {
     repositories {
