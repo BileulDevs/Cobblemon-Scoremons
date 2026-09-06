@@ -16,7 +16,7 @@
     ]
   },
   "depends": {
-    "cobblemon": ">=1.7.3",
+    "cobblemon": ">=1.8.0",
     "minecraft": "1.21.1"
   }
 }
