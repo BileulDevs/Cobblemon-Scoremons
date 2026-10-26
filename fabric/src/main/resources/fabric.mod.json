@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblemon_scoremons",
+  "version": "${version}",
+  "name": "ScoreMons",
+  "description": "Player statistics for cobblemon",
+  "authors": [
+    "Darcosse"
+  ],
+  "license": "MIT License",
+  "icon": "assets/scoremons/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.darcosse.fabric.scoremons.ScoreMons"
+    ]
+  },
+  "mixins": [
+    "scoremons-common.mixins.json"
+  ],
+  "depends": {
+    "cobblemon": ">=1.8.0",
+    "minecraft": "1.21.1"
+  }
+}

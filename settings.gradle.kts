@@ -8,3 +8,10 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+// "common" must stay first: both platform projects consume its namedElements/transformProduction* configurations.
+listOf(
+    "common",
+    "neoforge",
+    "fabric"
+).forEach { include(it) }
