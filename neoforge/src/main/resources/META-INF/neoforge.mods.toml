@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT License"
+
+[[mods]]
+modId = "cobblemon_scoremons"
+version = "${version}"
+displayName = "ScoreMons"
+authors = "Darcosse"
+description = '''
+Player statistics for cobblemon
+'''
+logoFile = "assets/scoremons/icon.png"
+
+[[dependencies.cobblemon_scoremons]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cobblemon_scoremons]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.182,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cobblemon_scoremons]]
+modId = "cobblemon"
+type = "required"
+versionRange = "[1.8.0,)"
+# Cobblemon must be constructed first: its event bus objects are touched from our constructor.
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "scoremons-common.mixins.json"
