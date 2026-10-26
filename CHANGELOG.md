@@ -38,7 +38,7 @@ ScoreMons 3.x counted.
 - Species names in broadcasts now come from Cobblemon's own translations; the 1025 species
   entries ScoreMons duplicated in its lang files are gone.
 
-### ✨ New
+### New
 
 - **NeoForge support** alongside Fabric (multiloader build, one jar per loader).
 - **27 new statistics**:
@@ -57,7 +57,7 @@ ScoreMons 3.x counted.
 - Pokédex stats are synchronised when a player joins, so worlds created before ScoreMons get
   correct values without waiting for the next Pokédex change.
 
-### 🐛 Fixed
+### Fixed
 
 - **Crash on trades with a non-player participant**: the trade handler cast every participant
   to a player.
@@ -72,7 +72,7 @@ ScoreMons 3.x counted.
 - **Wrong mod icon path** in `fabric.mod.json`.
 - Species names such as `Nidoranf` / `Nidoranm` displayed raw in broadcasts.
 
-### 🔧 Internal
+### Internal
 
 - Event listeners run at the lowest priority and ignore cancelled events, so ScoreMons counts
   what actually happened after other addons reacted.
